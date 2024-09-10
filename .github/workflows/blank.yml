@@ -1,0 +1,31 @@
+# .github/workflows/trigger-repo2.yml
+
+name: Trigger Repo2 Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger the workflow on
+
+jobs:
+  trigger-repo2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo1
+        uses: actions/checkout@v3
+
+      - name: Collect Metadata
+        id: collect-metadata
+        run: |
+          echo "REPO1_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "Collecting metadata from repo1"
+          # Add your metadata collection logic here
+
+      - name: Trigger repo2 workflow
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d '{"event_type": "process-metadata", "client_payload": {"metadata": "${{ env.REPO1_SHA }}"}}' \
+            https://api.github.com/repos/YOUR_ORG/repo2/dispatches
