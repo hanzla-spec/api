@@ -21,4 +21,4 @@ jobs:
           repository: hanzla-spec/cicd
 
       - name: check ls..
-        run: ls
+        run: ./start.sh
