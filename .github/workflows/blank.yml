@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: init
+        run: rm -rf ./*
       - name: Checkout api
         uses: actions/checkout@v3
 
