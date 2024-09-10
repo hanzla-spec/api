@@ -16,6 +16,8 @@ jobs:
         run: rm -rf ./*
       - name: Checkout api
         uses: actions/checkout@v3
+        with:
+          path: main
 
       - name: Checkout cicd
         uses: actions/checkout@v3
