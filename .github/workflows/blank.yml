@@ -1,33 +1,18 @@
-# .github/workflows/trigger-repo2.yml
-
 name: Trigger Repo2 Workflow
 
 on:
   push:
     branches:
-      - poc  # Adjust this to the branch you want to trigger the workflow on
+      - main  # or specify your desired branch
 
 jobs:
-  trigger-repo2:
+  trigger_repo2:
     runs-on: ubuntu-latest
-
     steps:
-      - name: init
-        run: rm -rf ./*
-      - name: Checkout api
-        uses: actions/checkout@v3
+      - name: Trigger workflow in cicd
+        uses: peter-evans/repository-dispatch@v2
         with:
-          path: main
-
-      - name: Checkout cicd
-        uses: actions/checkout@v3
-        with:
-          repository: hanzla-spec/cicd
-          path: cicd_path
-      - name: check ls
-        run: ls
-      - name: Run script from cicd repo
-        run: |
-          cd cicd_path  # Change directory to where repo2 was checked out
-          chmod +x start.sh  # Make the script executable
-          ./start.sh  # Run the script
+          token: 'secret-token'
+          repository: hanzla-spec/cicd # Replace with the actual Repo2 details
+          event-type: trigger-build-deploy # Custom event name
+          client-payload: '{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
