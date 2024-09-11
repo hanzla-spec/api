@@ -1,4 +1,4 @@
-name: Dispatch Event to Another Repository
+name: Dispatch -Event to Another Repository
 
 on:
   push:
