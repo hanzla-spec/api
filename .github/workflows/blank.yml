@@ -9,6 +9,9 @@ jobs:
   trigger_repo2:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Get author information
         id: get_author
         run: |
