@@ -12,7 +12,7 @@ jobs:
       - name: Trigger workflow in cicd
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: 'secret-token'
+          token: ${{ secrets.SECRET_TOKEN }}
           repository: hanzla-spec/cicd # Replace with the actual Repo2 details
           event-type: trigger-build-deploy # Custom event name
           client-payload: '{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
