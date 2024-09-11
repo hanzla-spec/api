@@ -9,10 +9,12 @@ jobs:
   trigger_repo2:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger workflow in cicd
-        uses: peter-evans/repository-dispatch@v2
+      - name: Trigger workflow in Repo2
+        uses: convictional/trigger-workflow-action@v1
         with:
-          token: ${{ secrets.SECRET_TOKEN }}
-          repository: hanzla-spec/cicd # Replace with the actual Repo2 details
-          event-type: trigger-build-deploy # Custom event name
-          client-payload: '{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}"}'
+          github-token: ${{ secrets.SECRET_TOKEN }} # Ensure the token has access to Repo2
+          owner: hanzla-spec # Your organization or username
+          repo: cicd # The target repo (Repo2)
+          workflow-file-name: build-and-deploy.yml # The workflow file in Repo2
+          ref: main # The branch to run the workflow on in cicd repo
+          inputs: '{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}"}' # Pass metadata
