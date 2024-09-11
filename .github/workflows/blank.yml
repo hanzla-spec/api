@@ -19,4 +19,4 @@ jobs:
         token: ${{ secrets.SECRET_TOKEN }} # Or use a PAT with the necessary permissions
         repository: hanzla-spec/cicd
         event-type: build-and-deploy-cicd
-        client-payload: '{"ref":"github.ref", "inputs":{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}", "author": "hanzla"}}'
+        client-payload: '{"ref": "${{ github.ref }}", "inputs":{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}", "author": "hanzla"}}'
