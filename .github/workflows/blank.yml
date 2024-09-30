@@ -24,4 +24,4 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/hanzla-spec/cicd/actions/workflows/deploy.yml/dispatches \
-            -d '{"ref":"main",  inputs":{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}", "author": "${{ env.AUTHOR }}"}}'
+            -d '{"ref":"main",  "inputs":{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}", "author": "${{ env.AUTHOR }}"}}'
