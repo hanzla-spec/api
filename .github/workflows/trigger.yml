@@ -5,6 +5,10 @@ on:
     branches:
       - main  # or your preferred branch
       - feature
+  pull_request:
+    branches:
+      - main
+      - feature 
 
 jobs:
   trigger_repo2:
