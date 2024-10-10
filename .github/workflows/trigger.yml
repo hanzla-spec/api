@@ -1,4 +1,4 @@
-name: Trigger Repo2 Workflow
+name: Trigger workflow
 
 on:
   push:
