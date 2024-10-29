@@ -3,7 +3,7 @@ name: Push Event Workflow
 on:
   push:
     branches:
-      - main
+      - poc
 
 jobs:
   trigger_dispatch:
