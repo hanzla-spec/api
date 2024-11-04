@@ -14,10 +14,9 @@ jobs:
       - name: Get Commit ID and Message
         id: get_commit_info
         run: |
+          echo "Author Name: ${{ github.event.head_commit.author.name }}"
+          echo "Author Email: ${{ github.event.head_commit.author.email }}"
           echo "Commit Hash: ${{ github.event.after }}"
-          echo "Author: ${{ github.actor }}"
-          echo "Committer Name: ${{ github.event.head_commit.committer.name }}"
-          echo "Committer Email: ${{ github.event.head_commit.committer.email }}"
           echo "Date: ${{ github.event.head_commit.timestamp }}"
           echo "Commit Message: ${{ github.event.head_commit.message }}"
 
