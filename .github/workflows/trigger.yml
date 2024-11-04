@@ -14,11 +14,7 @@ jobs:
       - name: Get Commit ID and Message
         id: get_commit_info
         run: |
-          echo "Author Name: ${{ github.event.head_commit.author.name }}"
-          echo "Author Email: ${{ github.event.head_commit.author.email }}"
-          echo "Commit Hash: ${{ github.event.after }}"
-          echo "Date: ${{ github.event.head_commit.timestamp }}"
-          echo "Commit Message: ${{ github.event.head_commit.message }}"
+          echo "Commit ID: ${{ github.event.after }}\n Changes for: ${{ github.event.head_commit.message }}\n Pushed by: ${{ github.event.head_commit.author.name }}"
 
       - name: Trigger Workflow Dispatch
         run: |
