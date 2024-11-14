@@ -16,7 +16,7 @@ jobs:
         run: |
           echo -e "Commit ID: ${{ github.event.after }}\n Changes for: ${{ github.event.head_commit.message }}\n Pushed by: ${{ github.event.head_commit.author.name }}"
           echo "${{github.ref}}"
-          branch_name=$(git rev-parse --abbrev-ref HEAD)
+          branch_name=$(git branch -r -contains ${{github.event.after}} | grep -v HEAD | sed 's/origin\///' | head -n 1)
           echo "Branch Name: $branch_name"
       # - name: Trigger Workflow Dispatch
       #   run: |
